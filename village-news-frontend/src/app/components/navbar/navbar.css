@@ -1,0 +1,13 @@
+.navbar-brand{
+    font-size:28px;
+    font-weight:bold;
+}
+
+.nav-link{
+    font-size:18px;
+    margin-left:15px;
+}
+
+.nav-link:hover{
+    color:yellow !important;
+}

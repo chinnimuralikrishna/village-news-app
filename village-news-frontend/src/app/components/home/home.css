@@ -1,0 +1,63 @@
+.hero {
+    background: linear-gradient(135deg, #198754, #20c997);
+    color: white;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.hero p {
+    font-size: 20px;
+    max-width: 700px;
+    margin: 20px auto;
+}
+
+.hero button {
+    padding: 12px 30px;
+    font-size: 18px;
+}.latest-news h2 {
+    font-weight: bold;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+}
+
+.card img {
+    height: 220px;
+    object-fit: cover;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    transition: 0.3s;
+}
+.categories {
+    margin-top: 50px;
+}
+
+.category-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,.1);
+    cursor: pointer;
+    transition: .3s;
+    font-size: 45px;
+}
+
+.category-card h5 {
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+.category-card:hover {
+    transform: translateY(-8px);
+    background: #198754;
+    color: white;
+}

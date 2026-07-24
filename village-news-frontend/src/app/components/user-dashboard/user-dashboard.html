@@ -1,0 +1,36 @@
+<div class="container mt-5">
+  <!-- <h2>User Dashboard</h2>
+
+  <p><strong>Total News:</strong> {{ news.length }}</p> -->
+
+  <!-- News Cards -->
+  <div class="row mt-4">
+    <div class="col-md-6 col-lg-4 mb-4" *ngFor="let item of news">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <!-- Fallbacks check for common backend field names -->
+          <h5 class="card-title">{{ item.title || item.heading || item.name || 'Untitled' }}</h5>
+          <p class="card-text">{{ item.description || item.details || item.content || 'No description provided.' }}</p>
+        </div>
+        <div class="card-footer bg-transparent border-top-0 d-flex justify-content-between align-items-center">
+          <span class="badge bg-primary" *ngIf="item.category">{{ item.category }}</span>
+          <small class="text-muted" *ngIf="item.location">{{ item.location }}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="d-flex justify-content-between mb-3">
+
+  <button class="btn btn-success" routerLink="/add-news">
+    ➕ Add News
+  </button>
+
+  <button class="btn btn-primary" (click)="loadNews()">
+    🔄 Refresh
+  </button>
+  <button class="btn btn-info" routerLink="/my-news">
+    📰 My News
+</button>
+
+</div>
