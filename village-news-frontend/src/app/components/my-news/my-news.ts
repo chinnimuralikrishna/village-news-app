@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import {Router} from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Api } from '../../services/api';
 
@@ -16,7 +17,8 @@ export class MyNews implements OnInit {
 
   constructor(
     private api: Api,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -43,4 +45,26 @@ export class MyNews implements OnInit {
       }
     });
   }
+  editNews(item: any) {
+  this.router.navigate(['/edit-news', item.id]);
+}
+
+deleteNews(id: number) {
+
+  if (!confirm("Are you sure you want to delete this news?")) {
+    return;
+  }
+
+  this.api.deleteNews(id).subscribe({
+    next: (res: any) => {
+      alert(res.message);
+      this.loadMyNews(); // Refresh the list
+    },
+    error: (err: any) => {
+      console.log(err);
+      alert("Unable to delete news.");
+    }
+  });
+
+}
 }

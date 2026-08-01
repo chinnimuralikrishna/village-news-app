@@ -3,6 +3,7 @@ from config import db
 
 news = Blueprint('news', __name__)
 
+
 @news.route('/news', methods=['GET'])
 def get_news():
 
@@ -11,7 +12,6 @@ def get_news():
     cursor.execute("""
         SELECT *
         FROM news
-        WHERE status='approved'
         ORDER BY created_at DESC
     """)
 
@@ -34,16 +34,18 @@ def add_news():
 
     sql = """
     INSERT INTO news
-    (title, description, category, location, status)
-    VALUES (%s, %s, %s, %s, 'pending')
+    (title, description, category, location)
+    VALUES (%s, %s, %s, %s)
     """
 
     cursor.execute(sql, (title, description, category, location))
     db.commit()
 
     return jsonify({
-        "message": "News submitted successfully. Waiting for admin approval."
+        "message": "News published successfully."
     })
+
+
 @news.route('/my-news/<int:user_id>', methods=['GET'])
 def get_my_news(user_id):
 
@@ -61,3 +63,48 @@ def get_my_news(user_id):
     data = cursor.fetchall()
 
     return jsonify(data)
+
+
+@news.route('/update-news/<int:id>', methods=['PUT'])
+def update_news(id):
+
+    data = request.get_json()
+
+    title = data['title']
+    description = data['description']
+    category = data['category']
+    location = data['location']
+
+    cursor = db.cursor()
+
+    sql = """
+    UPDATE news
+    SET title=%s,
+        description=%s,
+        category=%s,
+        location=%s
+    WHERE id=%s
+    """
+
+    cursor.execute(sql, (title, description, category, location, id))
+    db.commit()
+
+    return jsonify({
+        "message": "News updated successfully."
+    })
+
+@news.route('/delete-news/<int:id>', methods=['DELETE'])
+def delete_news(id):
+
+    cursor = db.cursor()
+
+    cursor.execute(
+        "DELETE FROM news WHERE id=%s",
+        (id,)
+    )
+
+    db.commit()
+
+    return jsonify({
+        "message": "News deleted successfully."
+    })

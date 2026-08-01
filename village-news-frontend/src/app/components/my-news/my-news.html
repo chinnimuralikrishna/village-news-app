@@ -18,18 +18,33 @@
             <span class="badge bg-light text-dark border me-2">{{ item.category }}</span>
             <small class="text-muted"><i class="bi bi-geo-alt"></i> {{ item.location }}</small>
           </div>
-          <div>
-            <!-- Status Badge -->
-            <span 
-              class="badge rounded-pill px-3 py-2"
-              [ngClass]="{
-                'bg-success': item.status === 'approved',
-                'bg-warning text-dark': item.status === 'pending',
-                'bg-danger': item.status === 'rejected'
-              }">
-              {{ item.status | titlecase }}
-            </span>
-          </div>
+         <div class="text-end">
+
+  <span
+    class="badge rounded-pill px-3 py-2 mb-2"
+    [ngClass]="{
+      'bg-success': item.status === 'approved',
+      'bg-warning text-dark': item.status === 'pending',
+      'bg-danger': item.status === 'rejected'
+    }">
+    {{ item.status | titlecase }}
+  </span>
+
+  <br>
+
+  <button
+    class="btn btn-warning btn-sm me-2"
+    (click)="editNews(item)">
+    ✏️ Edit
+  </button>
+
+  <button
+    class="btn btn-danger btn-sm"
+    (click)="deleteNews(item.id)">
+    🗑 Delete
+  </button>
+
+</div>
         </div>
       </div>
     </div>
