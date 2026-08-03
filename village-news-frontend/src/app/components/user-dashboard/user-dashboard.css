@@ -1,29 +1,85 @@
-/* Smooth hover effect on cards */
-.news-card {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  border-radius: 12px;
-  overflow: hidden;
+.news-card{
+
+    border:none;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    transition:.3s;
+
 }
 
-.news-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08) !important;
+.news-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.2);
+
 }
 
-/* Restrict title to maximum 2 lines */
-.text-truncate-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+.card-img-top{
+
+    height:240px;
+
+    object-fit:cover;
+
 }
 
-/* Restrict description to maximum 3 lines */
-.text-truncate-3 {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+.card-body{
+
+    padding:20px;
+
+}
+
+.card-body h4{
+
+    font-weight:bold;
+
+    margin-top:10px;
+
+}
+
+.card-body p{
+
+    color:#666;
+
+    margin-top:15px;
+
+}
+
+.card-footer{
+
+    border:none;
+
+    padding:15px;
+
+}
+
+.card-footer button{
+
+    border-radius:30px;
+
+    transition:.3s;
+
+}
+
+.card-footer button:hover{
+
+    background:#0d6efd;
+
+    color:white;
+
+}
+
+.badge{
+
+    font-size:13px;
+
+}
+
+.container{
+
+    margin-bottom:80px;
+
 }

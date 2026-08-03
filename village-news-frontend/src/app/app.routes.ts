@@ -7,6 +7,7 @@ import { UserDashboard } from './components/user-dashboard/user-dashboard';
 import { AdminDashboard } from './components/admin-dashboard/admin-dashboard';
 import { AddNews } from './components/add-news/add-news';
 import { MyNews } from './components/my-news/my-news';
+import { EditNews } from './components/edit-news/edit-news';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -16,5 +17,6 @@ export const routes: Routes = [
   { path: 'admin-dashboard', component: AdminDashboard },
   { path: 'add-news', component: AddNews },
   { path: 'my-news', component: MyNews },
+  { path: 'edit-news/:id', component: EditNews },
   { path: '**', redirectTo: '' }
 ];

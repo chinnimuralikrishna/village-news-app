@@ -9,7 +9,7 @@ import { Api } from '../../services/api';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './user-dashboard.html',
-  styleUrl: './user-dashboard.css'
+  styleUrls: ['./user-dashboard.css']
 })
 export class UserDashboard {
 
@@ -35,5 +35,31 @@ loadNews() {
       console.log(err);
     }
   });
+}
+likeNews(newsId: number) {
+
+  const data = {
+    news_id: newsId,
+    user_id: 1
+  };
+
+  this.api.likeNews(data).subscribe({
+
+    next: (res: any) => {
+
+      alert(res.message);
+
+      this.loadNews();
+
+    },
+
+    error: (err: any) => {
+
+      console.log(err);
+
+    }
+
+  });
+
 }
 }

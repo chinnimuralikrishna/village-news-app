@@ -15,22 +15,55 @@ export class AddNews {
     title: '',
     description: '',
     category: '',
-    location: ''
+    location: '',
+    author_id: 1,
+    image: ''
   };
+
+  selectedFile!: File;
 
   constructor(private api: Api) {}
 
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+  }
+
   submitNews() {
 
-    this.api.addNews(this.news).subscribe({
+    console.log("Submit button clicked");
+
+    if (!this.selectedFile) {
+      alert("Please select an image.");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("image", this.selectedFile);
+
+    this.api.uploadImage(formData).subscribe({
 
       next: (res: any) => {
-        alert(res.message);
+
+        this.news.image = res.filename;
+
+        this.api.addNews(this.news).subscribe({
+
+          next: (response: any) => {
+            alert(response.message);
+          },
+
+          error: (err: any) => {
+            console.log(err);
+            alert("Failed to save news.");
+          }
+
+        });
+
       },
 
       error: (err: any) => {
         console.log(err);
-        alert(err.error.message);
+        alert("Image upload failed.");
       }
 
     });

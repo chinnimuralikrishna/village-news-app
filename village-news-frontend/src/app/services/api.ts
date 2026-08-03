@@ -46,4 +46,10 @@ export class Api {
     return this.http.post(`${this.baseUrl}/register`, userData);
   }
 
+uploadImage(formData: FormData) {
+  return this.http.post(`${this.baseUrl}/upload-image`, formData);
+}
+likeNews(data: any) {
+  return this.http.post(`${this.baseUrl}/like-news`, data);
+}
 }
